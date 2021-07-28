@@ -23,9 +23,11 @@ def round_trip(sout, sin, custom_width=None, version=None, indent=None):
 
 
 def format_and_write(file, width, version):
-    with tempfile.TemporaryFile() as temporary_file, open(file, "r") as sin:
-        round_trip(temporary_file, sin, width, version)
-        copyfile(temporary_file.name, file)
+    with tempfile.NamedTemporaryFile(mode="w") as temporary_file:
+        with open(file, "r") as stream_input:
+            round_trip(temporary_file, stream_input, width, version)
+        with open(temporary_file.name) as rf, open(file, "w") as stream_out:
+            stream_out.write(rf.read())
 
 
 def format_and_display(file, width, version):

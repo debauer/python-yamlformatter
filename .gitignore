@@ -1,3 +1,8 @@
 build/
 dist/
 yamlfmt.egg-info/
+.venv
+.github
+.idea
+.mypy_cache
+.envrc

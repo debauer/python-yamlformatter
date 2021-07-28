@@ -4,7 +4,7 @@ Arg parsing, calling other functions.
 import argparse
 import sys
 
-from yamlfmt.yamlfmt import round_trip, format_and_display, format_and_write
+from yamlformatter.yamlformatter import round_trip, format_and_display, format_and_write
 
 parser = argparse.ArgumentParser()
 parser.add_argument("file", help="file to parse", nargs="*")

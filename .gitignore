@@ -1,6 +1,6 @@
 build/
 dist/
-yamlfmt.egg-info/
+yamlformatter.egg-info/
 .venv
 .github
 .idea

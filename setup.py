@@ -25,7 +25,7 @@ setup(
     packages=["yamlformatter"],
     entry_points={
         'console_scripts': [
-            'yamlformatter = yamlformatter:__main__.main',
+            'yamlformatter = yamlformatter.__main__:main',
         ],
     },
     url="https://github.com/debauer/python-yamlformatter/",

@@ -12,8 +12,8 @@ classifiers = [
 ]
 
 setup(
-    author="Manuel Mendez",
-    author_email="mmendez534@gmail.com",
+    author="Manuel Mendez, David Bauer",
+    author_email="mmendez534@gmail.com, github@debauer.net",
     classifiers=classifiers,
     description="An opinionated yaml formatter based on ruamel.yaml",
     install_requires=["ruamel.yaml"],
@@ -21,13 +21,13 @@ setup(
     license="GPLV3",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    name="yamlfmt",
-    packages=["yamlfmt"],
+    name="yamlformatter",
+    packages=["yamlformatter"],
     entry_points={
         'console_scripts': [
-            'yamlfmt = yamlfmt:__main__.main',
+            'yamlformatter = yamlformatter.__main__:main',
         ],
     },
-    url="https://github.com/mmlb/yamlfmt",
-    version="1.1.0",
+    url="https://github.com/debauer/python-yamlformatter/",
+    version="1.1.1",
 )

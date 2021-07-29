@@ -1,6 +1,7 @@
 """
 Yaml handling, file copying
 """
+import re
 import sys
 import tempfile
 from ruamel import yaml
@@ -19,14 +20,18 @@ def round_trip(output_stream, input_stream, custom_width=None, version=None, ind
     )
 
 
-def format_and_write(file, width, version) -> None:
+def format_and_write(file, width, version, ansible) -> None:
     with tempfile.NamedTemporaryFile(mode="w") as temporary_file:
         with open(file, "r") as stream_input:
             round_trip(temporary_file, stream_input, width, version)
         with open(temporary_file.name) as rf, open(file, "w") as stream_out:
-            stream_out.write(rf.read())
+            yaml_formatted = rf.read()
+            if ansible:
+                yaml_formatted = "\n\n- name".join(yaml_formatted.split("\n- name"))
+                yaml_formatted = re.sub("[\n]{2,}", "\n\n", yaml_formatted)
+            stream_out.write(yaml_formatted)
 
 
-def format_and_display(file, width, version) -> None:
+def format_and_display(file, width, version, ansible) -> None:
     with open(file, "r") as sin:
         round_trip(sys.stdout, sin, width, version)
